@@ -66,7 +66,7 @@ def main():
     best = speedtest_cli.getBestServer(servers)
 
     print("Using speedtest.net server hosted by {sponsor} ({name}).\n"
-          "Host: {host}\n\nLatency: {latency} ms".format(**best))
+          "Host: {host}\nDistance: {d:0.1f} km\nLatency: {latency} ms".format(**best))
 
     sizes = [350, 500, 750, 1000, 1500, 2000, 2500, 3000, 3500, 4000]
     urls = []
@@ -92,6 +92,12 @@ def main():
         "{prefix}.latency {latency} {timestamp}\n".format(
         prefix=args.graphite_prefix,
         latency=best['latency'],
+        timestamp=t,
+    ))
+    s.send(
+        "{prefix}.distance {distance} {timestamp}\n".format(
+        prefix=args.graphite_prefix,
+        distance=best['d'],
         timestamp=t,
     ))
     s.send(
