@@ -1,7 +1,7 @@
 .PHONY: all deb
 
 NAME := speedtest-scripts
-VERSION := 1.1.0
+VERSION := 1.1.1
 ARCH := all
 MAINTAINER := Nick Groenen <nick@groenen.me>
 DESCRIPTION := Scripts for testing internet bandwidth using speedtest.net
